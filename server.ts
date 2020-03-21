@@ -15,13 +15,13 @@
  * import for `ngExpressEngine`.
  */
 
-import 'zone.js/dist/zone-node';
-
-import * as express from 'express';
-import { join } from 'path';
+let express = require("express");
+const ngUniversal = require('@nguniversal/express-engine');
+let path = require("path")
 let cors = require("cors");
 let bodyParser = require("body-parser");
 let expressJwt = require("express-jwt");
+
 // Import Mongoose
 let mongoose = require("mongoose");
 
@@ -29,22 +29,7 @@ let mongoose = require("mongoose");
 const app = express();
 
 const PORT = process.env.PORT || 8000;
-const DIST_FOLDER = join(process.cwd(), 'dist/browser');
-
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP, ngExpressEngine, provideModuleMap } = require('./dist/server/main');
-
-// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-app.engine(
-  'html',
-  ngExpressEngine({
-    bootstrap: AppServerModuleNgFactory,
-    providers: [provideModuleMap(LAZY_MODULE_MAP)]
-  })
-);
-
-app.set('view engine', 'html');
-app.set('views', DIST_FOLDER);
+const DIST_FOLDER = path.join(process.cwd(), 'dist');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,7 +37,8 @@ app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
 mongoose.connect("mongodb://heroku_g4xpgdq2:k0mr341in2l2vtron8c559m0eq@ds111050.mlab.com:11050/heroku_g4xpgdq2", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
 });
 var db = mongoose.connection;
 
@@ -62,6 +48,10 @@ else console.log("DB connected successfully");
 
 // Import routes
 let apiRoutes = require("./api/api-routes");
+
+
+// Use Api routes in the App
+app.use("/api", apiRoutes);
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(
@@ -78,25 +68,18 @@ app.use(
       }
       return null;
     }
-  }).unless({ path: [/^\/api/,"/api/user/authenticate", "/api/users"]})
+  }).unless({ path: [/^(\/api)*/,"/api/user/authenticate", "/api/users"]})
 );
 
-// Use Api routes in the App
-app.use("/api", apiRoutes);
+app.use(express.static(DIST_FOLDER)); 
 
-// Example Express Rest API endpoints
-// app.get('/api/**', (req, res) => { });
-// Serve static files from /browser
-app.get(
-  '*.*',
-  express.static(DIST_FOLDER, {
-    maxAge: '1y'
-  })
-);
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views', DIST_FOLDER);
 
 // All regular routes use the Universal engine
-app.get('*', (req, res) => {
-  res.render('index', { req });
+app.get('/*', (req, res) => {
+  res.render('index', { req, res });
 });
 
 // Start up the Node server

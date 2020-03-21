@@ -1,3 +1,4 @@
-﻿export const appConfig = {
-  apiUrl: "https://ideacollab.herokuapp.com:3000"
+﻿import { environment } from '../environments/environment'
+export const appConfig = {
+  apiUrl: environment.apiEndpoint
 };
