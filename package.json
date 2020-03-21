@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run serve:ssr",
+    "start": "npm run start-api",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -13,7 +13,7 @@
     "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer --port 8000 ./dist/coverageCoach/stats-es2015.json",
     "start-api": "node ./api/server.js",
     "build-prod": "ng build --prod",
-    "heroku-postbuild": "npm run build-prod && npm run start-api"
+    "heroku-postbuild": "npm run build-prod"
   },
   "private": true,
   "dependencies": {
