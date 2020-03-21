@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiEndpoint: "https://ideacollab.herokuapp.com:3000"
 };

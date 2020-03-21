@@ -1,3 +1,5 @@
-﻿export const appConfig = {
-  apiUrl: 'http://localhost:3000/api'
+﻿import { environment } from '../environments/environment';
+
+export const appConfig = {
+  apiUrl: environment.apiEndpoint
 };
