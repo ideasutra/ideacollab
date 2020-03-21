@@ -2,10 +2,10 @@
 import { SearchService } from './';
 
 @Component({
-  templateUrl: 'home.component.html'
+  templateUrl: 'search.component.html'
 })
-export class HomeComponent implements OnInit {
-  constructor(private ideaService: SearchService) {
+export class SearchComponent implements OnInit {
+  constructor(private searchService: SearchService) {
   }
 
   ngOnInit() {
