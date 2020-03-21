@@ -4,9 +4,10 @@ import { Idea } from '../core/models/index';
 import { IdeaService } from '../core/services/index';
 
 @Component({
-  templateUrl: 'home.component.html'
+  templateUrl: 'idea.component.html',
+  styleUrls: ['./idea.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class IdeaComponent implements OnInit {
   ideas: Idea[] = [];
 
   constructor(private ideaService: IdeaService) {

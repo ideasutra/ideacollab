@@ -4,7 +4,8 @@ import { User } from '../core/models/index';
 import { UserService } from '../core/services/index';
 
 @Component({
-  templateUrl: 'home.component.html'
+  templateUrl: 'home.component.html',
+  styleUrls: ['./home.component.scss']  
 })
 export class HomeComponent implements OnInit {
   currentUser: User;
