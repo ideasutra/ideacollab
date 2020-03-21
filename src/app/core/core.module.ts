@@ -13,7 +13,7 @@ import {
   JwtInterceptorProvider,
   ErrorInterceptorProvider
 } from "./helpers/index";
-import { AuthenticationService, UserService } from "./services/index";
+import { AuthenticationService, UserService, IdeaService, CategoryService, TagService, FeedbackService } from "./services/index";
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -24,6 +24,10 @@ import { AuthenticationService, UserService } from "./services/index";
     ValidationService,
     AuthenticationService,
     UserService,
+    IdeaService,
+    CategoryService,
+    TagService,
+    FeedbackService,
     JwtInterceptorProvider,
     ErrorInterceptorProvider
   ],
