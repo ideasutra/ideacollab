@@ -3,8 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiEndpoint: "https://ideacollab.herokuapp.com:3000"
+  production: false
 };
 
 /*

@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run serve:ssr",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -15,7 +14,7 @@
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run ideacollab:server:production --bundleDependencies all",
-    "heroku-postbuild": "npm run build:ssr && node ./api/server.js"
+    "heroku-postbuild": "npm run build:ssr && npm run serve:ssr && node ./api/server.js"
   },
   "private": true,
   "dependencies": {
