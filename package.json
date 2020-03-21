@@ -37,8 +37,10 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "express-serve-static-core": "^0.1.1",
+    "jquery": "^3.4.1",
     "mongoose": "^5.9.5",
     "ngx-bootstrap": "^5.5.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -6,6 +6,7 @@ import { BootstrapModule } from "./bootstrap.module";
 import { AppComponent } from "./app.component";
 
 import { HomeComponent } from "./home/index";
+import { LayoutComponent } from "./layout/index";
 import { LoginComponent } from "./login/index";
 import { RegisterComponent } from "./register/index";
 import { routing } from "./app.routing";
@@ -16,7 +17,8 @@ import { CoreModule } from "./core/core.module";
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
