@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:ssr && bpm run serve:ssr",
-    "start-server": "node ./api/server.js",    
+    "start": "npm run serve:ssr",
+    "start-server": "node ./api/server.js",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -15,13 +15,14 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run ideacollab:server:production --bundleDependencies all"
+    "build:client-and-server-bundles": "ng build --prod && ng run ideacollab:server:production --bundleDependencies all",
+    "heroku-postbuild": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.7",
     "@angular/common": "~9.0.7",
-    "@angular/compiler": "~9.0.7",
+    "@angular/compiler": "^9.0.7",
     "@angular/core": "~9.0.7",
     "@angular/forms": "~9.0.7",
     "@angular/platform-browser": "~9.0.7",
@@ -47,7 +48,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.7",
     "@angular/cli": "~9.0.7",
-    "@angular/compiler-cli": "~9.0.7",
+    "@angular/compiler-cli": "^9.0.7",
     "@angular/language-service": "~9.0.7",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
