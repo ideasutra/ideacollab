@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start": "npm run serve:ssr",
     "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -11,10 +12,11 @@
     "format:write": "prettier src/**/*.{ts,json,md,scss} --write",
     "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer --port 8000 ./dist/coverageCoach/stats-es2015.json",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
+    "start-api": "forever start ./api/server.js",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run ideacollab:server:production --bundleDependencies all",
-    "heroku-postbuild": "npm run build:ssr && npm run serve:ssr && node ./api/server.js"
+    "heroku-postbuild": "npm run build:ssr && node run start-api"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +39,7 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "express-serve-static-core": "^0.1.1",
+    "forever-monitor": "^2.0.0",
     "mongoose": "^5.9.5",
     "ngx-bootstrap": "^5.5.0",
     "rxjs": "~6.5.4",

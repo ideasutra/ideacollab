@@ -18,7 +18,7 @@ var db = mongoose.connection;
 
 // Added check for DB connection
 if (!db) console.log("Error connecting db");
-else console.log("Db connected successfully");
+else console.log("DB connected successfully");
 
 // Import routes
 let apiRoutes = require("./api-routes");
@@ -46,6 +46,11 @@ app.use("/api", apiRoutes);
 
 // start server
 let port = process.env.NODE_ENV ? process.env.NODE_ENV : 3000;
-app.listen(port, function() {
-  console.log("Server listening on port " + port);
-});
+
+try {
+  app.listen(port, function() {
+    console.log("Server listening on port " + port);
+  });
+} catch (e) {
+  console.error("There is already a server listing on port " + port)
+}
