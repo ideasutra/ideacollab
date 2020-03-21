@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: "http://localhost:3000"
+  apiEndpoint: "https://ideacollab.herokuapp.com:3000"
 };
 
 /*

@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:write": "prettier src/**/*.{ts,json,md,scss} --write",
-    "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer --port 4000 ./dist/coverageCoach/stats-es2015.json",
+    "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer --port 8000 ./dist/coverageCoach/stats-es2015.json",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
