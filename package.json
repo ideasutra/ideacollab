@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "format:write": "prettier src/**/*.{ts,json,md,scss} --write",
     "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer --port 8000 ./dist/coverageCoach/stats-es2015.json",
-    "start-api": "ng ./api/server.js",
+    "start-api": "node ./api/server.js",
     "build-prod": "ng build --prod",
     "heroku-postbuild": "npm run build-prod && npm run start-api"
   },
@@ -36,7 +36,6 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "express-serve-static-core": "^0.1.1",
-    "forever-monitor": "^2.0.0",
     "mongoose": "^5.9.5",
     "ngx-bootstrap": "^5.5.0",
     "rxjs": "~6.5.4",
