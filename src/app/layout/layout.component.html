@@ -1,40 +1,94 @@
 ﻿<header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-        <a class="navbar-brand" routerLink="home"><img src="assets/ideacollab_logo_weiß.png"/></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="app-navbar-right collapse navbar-collapse" id="navbarSupportedContent">     
-            <ul class="navbar-nav ml-auto ">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['active']" routerLink="home">Meine Ideen <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['active']" routerLink="home">Erfolgsstories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['active']" routerLink="home">Hall Of Fame</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['active']" routerLink="home">Über</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['active']" routerLink="home">Tipps & Tools</a>
-                </li>     
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['active']" routerLink="login">Login</a>
-                </li>                           
-            </ul>
-        </div>
-    </nav>
-
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <a class="navbar-brand" routerLink="home"
+      ><img src="assets/ideacollab_logo_weiß.png"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="app-navbar-right collapse navbar-collapse"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLinkActive]="['active']"
+            routerLink="ideas_user"
+            >Meine Ideen <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLinkActive]="['active']"
+            routerLink="ideas_completed"
+            >Erfolgsstories</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLinkActive]="['active']"
+            routerLink="ideas_popular"
+            >Hall Of Fame</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="about"
+            >Über</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="tipps"
+            >Tipps & Tools</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="login"
+            >Login</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <main>
-    <div class="container" style="height:1300px;">
-        <ng-content></ng-content>
-    </div>
+  <div class="container-fluid">
+    <ng-content></ng-content>
+  </div>
 </main>
 
-
-
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row justify-content-between">
+      <div class="col">
+        <a class="navbar-brand" routerLink="home"
+          ><img src="assets/ideacollab_logo.png"
+        /></a>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col">© 2020</div>
+          <div class="col">Impressum</div>
+          <div class="col">
+            <a routerLink="contact">Kontakt</a>
+          </div>
+          <div class="col">
+            <a routerLink="dsgvo">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

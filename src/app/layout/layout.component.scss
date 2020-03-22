@@ -1,7 +1,11 @@
 $header-height: 95px;
+$footer-height: 87px;
 
 main {
   padding-top: $header-height;
+  .container-fluid {
+    padding: 50px 170px;
+  }
 }
 
 header {
@@ -32,5 +36,26 @@ header {
 
   .navbar-collapse:not(.show) .nav-item + .nav-item {
     padding-left: 37px;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  line-height: $footer-height;
+  background: #f7f7f7;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  letter-spacing: 0.1em;
+
+  .container,
+  .d-flex {
+    height: $footer-height;
   }
 }

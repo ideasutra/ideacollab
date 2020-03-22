@@ -85,9 +85,20 @@
       format("svg"); /* Legacy iOS */
 }
 
+html,
 body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
+
+  a,
+  a:hover {
+    color: unset;
+  }
 }

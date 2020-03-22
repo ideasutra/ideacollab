@@ -11,6 +11,7 @@ import { LoginComponent } from "./login/index";
 import { RegisterComponent } from "./register/index";
 import { routing } from "./app.routing";
 import { CoreModule } from "./core/core.module";
+import { ErrorComponent } from "./error/error.component";
 
 @NgModule({
   declarations: [
@@ -18,10 +19,11 @@ import { CoreModule } from "./core/core.module";
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    LayoutComponent
+    LayoutComponent,
+    ErrorComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({ appId: "serverApp" }),
     BootstrapModule,
     FormsModule,
     ReactiveFormsModule,
