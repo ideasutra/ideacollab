@@ -12,12 +12,15 @@ import { RegisterComponent } from "./register/index";
 import { routing } from "./app.routing";
 import { CoreModule } from "./core/core.module";
 import { ErrorComponent } from "./error/error.component";
+import { LogoutComponent } from "./logout/logout.component";
+import { AuthenticationService } from "./core/services";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    LogoutComponent,
     RegisterComponent,
     LayoutComponent,
     ErrorComponent
@@ -30,7 +33,7 @@ import { ErrorComponent } from "./error/error.component";
     CoreModule.forRoot(),
     routing
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

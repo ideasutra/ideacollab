@@ -1,17 +1,29 @@
 ﻿<div class="col-md-12">
+  <div *ngIf="currentUser; then userList else hello"></div>
+</div>
+
+<ng-template #userList>
   <h1>Hi {{currentUser.firstName}}!</h1>
-  <p>You're logged in with the MEAN Stack & Angular 9, Bootstrap 4, NodeJS 12 + MongoDB!!</p>
+  <p>
+    You're logged in with the MEAN Stack & Angular 9, Bootstrap 4, NodeJS 12 +
+    MongoDB!!
+  </p>
   <h3>All registered users:</h3>
   <table class="table">
     <tr *ngFor="let user of users">
       <td>{{user.username}}</td>
-      <td> ({{user.firstName}} {{user.lastName}})</td>
+      <td>({{user.firstName}} {{user.lastName}})</td>
       <td>
         <a href="javascript:void(0)" (click)="deleteUser(user._id)">Delete</a>
       </td>
     </tr>
   </table>
+
   <p>
     <a [routerLink]="['/login']">Logout</a>
   </p>
-</div>
+</ng-template>
+
+<ng-template #hello>
+  Hello my friend! Nice to see you!
+</ng-template>
