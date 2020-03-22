@@ -42,7 +42,8 @@ ideaSchema.index({ _caption: "text" });
 ideaSchema.index({ _user: "text" });
 
 ideaSchema.static("findByCaption", function(text) {
-  return this.find({ _caption: /${text}/i }, function(err, docs) {});
+  let re = new RegExp(text, "i");
+  return this.find({ _caption: re }, function(err, docs) {});
 });
 
 ideaSchema.static("findByUser", function(text) {

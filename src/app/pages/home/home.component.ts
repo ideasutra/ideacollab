@@ -32,6 +32,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  public search(event) {
+    if (!event.target.value.trim()) {
+      this.loadAllIdeas();
+    } else {
+      this.findByCaption(event.target.value);
+    }
+  }
+
   private loadAllUsers() {
     this.userService.getAll().subscribe(users => {
       this.users = users;
@@ -42,5 +50,11 @@ export class HomeComponent implements OnInit {
     this.ideaService.getAll().subscribe(ideas => {
       this.ideas = ideas;
     });
+  }
+
+  private findByCaption(text) {
+    this.ideaService
+      .findByCaption(text)
+      .subscribe(ideas => [(this.ideas = ideas)]);
   }
 }

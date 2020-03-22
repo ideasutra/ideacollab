@@ -8,6 +8,14 @@ import { Idea } from "../models/index";
 export class IdeaService {
   constructor(private http: HttpClient) {}
 
+  findByCaption(text: string) {
+    return this.http.get<Idea>(appConfig.apiUrl + "/ideas/filter/" + text).pipe(
+      map((ideas: any) => {
+        return ideas.data;
+      })
+    );
+  }
+
   getAll() {
     return this.http.get<Idea[]>(appConfig.apiUrl + "/ideas").pipe(
       map((ideas: any) => {

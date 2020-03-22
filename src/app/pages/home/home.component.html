@@ -33,7 +33,12 @@
         <div class="col">
           <!-- Actual search box -->
           <div class="form-group has-search">
-            <input type="text" class="form-control" placeholder="Suche" />
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Suche"
+              (change)="search($event)"
+            />
             <i class="fa fa-search form-control-feedback"></i>
           </div>
         </div>
