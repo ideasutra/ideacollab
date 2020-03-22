@@ -1,39 +1,36 @@
 $header-height: 95px;
 
 main {
-    padding-top: $header-height;
+  padding-top: $header-height;
 }
 
 header {
+  font-family: Fredoka One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
+  color: #ffffff;
 
-font-family: Fredoka One;
-font-style: normal;
-font-weight: normal;
-font-size: 15px;
-line-height: 18px;
-letter-spacing: 0.1em;
-text-transform: uppercase;
+  .navbar {
+    background: linear-gradient(90deg, #e39344 -14.44%, #b63563 69.6%);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    height: $header-height;
+  }
 
-color: #FFFFFF;
-
-.navbar {
-    background: linear-gradient(90deg, #E39344 -14.44%, #B63563 69.6%);
-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-height: $header-height;
-}
-
-.app-navbar-right {
+  .app-navbar-right {
     padding-right: 57px;
     flex-direction: row-reverse;
-}
+  }
 
-.navbar-collapse.show {
-    background: linear-gradient(90deg, #E39344 -14.44%, #B63563 69.6%);
-}
+  .navbar-collapse.show {
+    background: linear-gradient(90deg, #e39344 -14.44%, #b63563 69.6%);
+  }
 
-.navbar-collapse:not(.show)
-.nav-item + .nav-item {
-padding-left: 37px;
-}
+  .navbar-collapse:not(.show) .nav-item + .nav-item {
+    padding-left: 37px;
+  }
 }
