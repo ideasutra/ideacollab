@@ -2,8 +2,6 @@
 
 DEMO: https://ideacollab.herokuapp.com/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
-
 ## Tech Stack
 
 Angular 9, Bootstrap 4, ExpressJS, MongoDB
