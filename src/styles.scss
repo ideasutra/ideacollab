@@ -102,4 +102,8 @@ body {
   a:hover {
     color: unset;
   }
+
+  input.form-control {
+    @include round-border;
+  }
 }

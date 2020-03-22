@@ -1,6 +1,6 @@
 export class Feedback {
-    _id: Number;
-    ideaId: number;
-    caption: string;
-    rating: Number;    
+  _id: string;
+  ideaId: string;
+  caption: string;
+  rating: Number;
 }

@@ -1,3 +1,7 @@
+var usersController = require("./controllers/users.controller");
+var ideasController = require("./controllers/ideas.controller");
+var tagsController = require("./controllers/tags.controller");
+
 // Filename: api-routes.js
 // Initialize express router
 let router = require("express").Router();
@@ -9,23 +13,93 @@ router.get("/", function(req, res) {
   });
 });
 
-// Import user controller
-var userController = require("./controllers/users.controller");
 // user routes
 router
   .route("/users")
-  .get(userController.index)
-  .post(userController.new);
+  .get(usersController.index)
+  .post(usersController.new);
 router
   .route("/user/:user_id")
-  .get(userController.view)
-  .patch(userController.update)
-  .put(userController.update)
-  .delete(userController.delete);
-router.route("/user/authenticate").post(userController.authenticate);
+  .get(usersController.view)
+  .patch(usersController.update)
+  .put(usersController.update)
+  .delete(usersController.delete);
+router.route("/user/authenticate").post(usersController.authenticate);
+
 router
   .route("/user/changepassword/:user_id")
-  .put(userController.changePassword);
+  .put(usersController.changePassword);
+
+// ideas routes
+router
+  .route("/ideas")
+  .get(ideasController.index)
+  .post(ideasController.new);
+
+router
+  .route("/ideas/:idea_id")
+  .get(ideasController.view)
+  .patch(ideasController.update)
+  .put(ideasController.update)
+  .delete(ideasController.delete);
+
+router.route("/ideas/filter/user/:user_id").get(ideasController.findByUser);
+
+router.route("/ideas/filter/:text").get(ideasController.findByCaption);
+
+// ideas routes
+router
+  .route("/tags")
+  .get(tagsController.index)
+  .post(tagsController.new);
+
+router
+  .route("/tags/:tag_id")
+  .get(tagsController.view)
+  .patch(tagsController.update)
+  .put(tagsController.update)
+  .delete(tagsController.delete);
+
+router.route("/tags/filter/:text").get(tagsController.findByCaption);
+
+var routeHandling = app => {
+  // Use Api routes in the App
+  app.use("/api", router);
+
+  let expressJwt = require("express-jwt");
+  var jwtHandling = (httpMethods = null) => {
+    return expressJwt({
+      secret: "Thisismyscretkey",
+      getToken: function(req) {
+        // Don't check all http methods, if some are given.
+        if (
+          httpMethods &&
+          !httpMethods.map(x => x.toUpperCase()).include(req.method)
+        ) {
+          // no need to test. this path is not protected.
+          return true;
+        }
+
+        if (
+          req.headers.authorization &&
+          req.headers.authorization.split(" ")[0] === "Bearer"
+        ) {
+          return req.headers.authorization.split(" ")[1];
+        } else if (req.query && req.query.token) {
+          return req.query.token;
+        }
+        return null;
+      }
+    });
+  };
+
+  app.use("/api/users", jwtHandling(["get"]));
+  app.use("/api/user/*", jwtHandling().unless("/api/user/authenticate"));
+  app.use("/api/ideas", jwtHandling(["post"]));
+  app.use("/api/idea/*", jwtHandling(["patch", "put", "delete"]));
+  app.use("/api/tags", jwtHandling(["post"]));
+  app.use("/api/tag/*", jwtHandling(["patch", "put", "delete"]));
+};
 
 // Export API routes
-module.exports = router;
+exports.addToApp = routeHandling;

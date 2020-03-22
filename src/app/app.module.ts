@@ -18,11 +18,11 @@ import { LogoutComponent } from "./pages/logout/logout.component";
 
 // Shared
 import { IdeaComponent } from "./shared/idea/idea.component";
+import { IdeaNewComponent } from "./shared/idea-new/idea-new.component";
+import { IdeaListComponent } from "./shared/idea-list/idea-list.component";
 
 // Other components
 import { LayoutComponent } from "./layout/index";
-
-// auto include / unsorted
 
 @NgModule({
   declarations: [
@@ -33,7 +33,9 @@ import { LayoutComponent } from "./layout/index";
     RegisterComponent,
     LayoutComponent,
     ErrorComponent,
-    IdeaComponent
+    IdeaComponent,
+    IdeaNewComponent,
+    IdeaListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),

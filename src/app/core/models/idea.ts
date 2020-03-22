@@ -1,8 +1,8 @@
 export class Idea {
-    _id: Number;
-    caption: string;
-    description: string;
-    userId: Array<Number>;
-    companionIds: Array<Number>
-    vote: Number;
+  _id: string;
+  caption: string;
+  description: string;
+  userId: Array<string>;
+  companionIds: Array<string>;
+  rating: Number;
 }

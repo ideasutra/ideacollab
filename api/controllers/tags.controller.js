@@ -1,12 +1,10 @@
-// userController.js
-// Import user model
-User = require("../models/user.model");
-var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
+// tagController.js
+// Import tag model
+Tag = require("../models/tag.model");
 
 // Handle index actions
 exports.index = function(req, res) {
-  User.get(function(err, users) {
+  Tag.get(function(err, tags) {
     if (err) {
       res.json({
         status: "error",
@@ -15,14 +13,15 @@ exports.index = function(req, res) {
     }
     res.json({
       status: "success",
-      message: "Users retrieved successfully",
-      data: users
+      message: "Tags retrieved successfully",
+      data: tags
     });
   });
 };
-// Handle create user actions
+
+// Handle create tag actions
 exports.new = function(req, res) {
-  User.find({ name: req.body.username.trim() }, function(err, users) {
+  User.find({ name: req.body.caption.trim() }, function(err, users) {
     if (err) {
       res.json({
         status: "error",
@@ -32,62 +31,82 @@ exports.new = function(req, res) {
     if (users && users.length > 0) {
       res.status(400).send({
         status: "error",
-        message: req.body.username + " is already taken"
+        message: req.body.caption + " is already taken"
       });
     } else {
-      var user = new User();
-      user.username = req.body.username ? req.body.username : user.username;
-      if (req.body.password) {
-        user.password = bcrypt.hashSync(req.body.password, 10);
-      }
-      user.firstName = req.body.firstName;
-      user.lastName = req.body.lastName;
-      // save the user and check for errors
-      user.save(function(err) {
+      var tag = new Tag();
+      tag.caption = req.body.caption ? req.body.caption : tag.caption;
+      tag.description = req.body.description;
+
+      // save the tag and check for errors
+      tag.save(function(err) {
         if (err) res.json(err);
         res.json({
-          message: "New user created!",
-          data: user
+          message: "New tag created!",
+          data: tag
         });
       });
     }
   });
 };
-// Handle view user info
-exports.view = function(req, res) {
-  User.findById(req.params.user_id, function(err, user) {
+
+// Handle view tag info
+exports.findByCaption = function(req, res) {
+  Tag.findById(req.params.text, function(err, tag) {
     if (err) res.send(err);
     res.json({
-      message: "User details loading..",
-      data: user
+      message: "Tag details loading..",
+      data: tag
     });
   });
 };
-// Handle update user info
+
+// Handle view tag info
+exports.view = function(req, res) {
+  Tag.findById(req.params.tag_id, function(err, tag) {
+    if (err) res.send(err);
+    res.json({
+      message: "Tag details loading..",
+      data: tag
+    });
+  });
+};
+
+// Handle view tag info
+exports.filter = function(req, res) {
+  Tag.findById(req.params.text, function(err, tag) {
+    if (err) res.send(err);
+    res.json({
+      message: "Tag details loading..",
+      data: tag
+    });
+  });
+};
+// Handle update tag info
 exports.update = function(req, res) {
-  User.findByIdAndUpdate(req.params.user_id, req.body, { new: true }, function(
+  Tag.findByIdAndUpdate(req.params.tag_id, req.body, { new: true }, function(
     err,
-    user
+    tag
   ) {
     if (err) res.send(err);
 
     res.json({
-      message: "User Info updated",
-      data: user
+      message: "Tag Info updated",
+      data: tag
     });
   });
 };
-// Handle delete user
+// Handle delete tag
 exports.delete = function(req, res) {
   User.remove(
     {
-      _id: req.params.user_id
+      _id: req.params.tag_id
     },
-    function(err, user) {
+    function(err, tag) {
       if (err) res.send(err);
       res.json({
         status: "success",
-        message: "User deleted"
+        message: "Tag deleted"
       });
     }
   );

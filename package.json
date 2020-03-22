@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "format:write": "prettier src/**/*.{ts,json,md,scss} --write",
     "analyze": "npm run build:prod -- --stats-json && webpack-bundle-analyzer --port 8000 ./dist/coverageCoach/stats-es2015.json",
-    "start-dev-api": "node ./api/server.js",
+    "start-dev-api": "node ./api/server.ts",
     "build-prod": "ng build --prod",
     "heroku-postbuild": "npm run build-prod"
   },

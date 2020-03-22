@@ -18,6 +18,5 @@ export class LayoutComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.currentUser = this.authenticationService.currentUser;
-    console.log(this.currentUser);
   }
 }

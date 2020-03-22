@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
 
-import { User } from "../../core/models/index";
-import { UserService } from "../../core/services/index";
+import { User, Idea } from "../../core/models/index";
+import { UserService, IdeaService } from "../../core/services/index";
 
 @Component({
   templateUrl: "home.component.html",
@@ -10,8 +10,12 @@ import { UserService } from "../../core/services/index";
 export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
+  ideas: Idea[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private ideaService: IdeaService
+  ) {
     if (typeof window !== "undefined") {
       this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     }
@@ -19,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loadAllUsers();
+    this.loadAllIdeas();
   }
 
   deleteUser(_id: string) {
@@ -30,6 +35,14 @@ export class HomeComponent implements OnInit {
   private loadAllUsers() {
     this.userService.getAll().subscribe(users => {
       this.users = users;
+    });
+  }
+
+  private loadAllIdeas() {
+    this.ideaService.getAll().subscribe(ideas => {
+      this.ideas = ideas;
+
+      console.log("ideas", this.ideas);
     });
   }
 }
