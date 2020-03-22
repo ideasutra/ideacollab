@@ -1,17 +1,16 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from "@angular/core";
 
-import { Idea } from '../core/models/index';
-import { IdeaService } from '../core/services/index';
+import { Idea } from "../../core/models/index";
+import { IdeaService } from "../../core/services/index";
 
 @Component({
-  templateUrl: 'idea.component.html',
-  styleUrls: ['./idea.component.scss']
+  templateUrl: "idea.component.html",
+  styleUrls: ["./idea.component.scss"]
 })
 export class IdeaComponent implements OnInit {
   ideas: Idea[] = [];
 
-  constructor(private ideaService: IdeaService) {
-  }
+  constructor(private ideaService: IdeaService) {}
 
   ngOnInit() {
     this.loadAllIdeas();

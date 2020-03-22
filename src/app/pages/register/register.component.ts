@@ -2,8 +2,8 @@
 import { Router } from "@angular/router";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 
-import { UserService } from "../core/services/index";
-import { AlertService } from "../core/components/index";
+import { UserService } from "../../core/services/index";
+import { AlertService } from "../../core/components/index";
 
 @Component({
   templateUrl: "register.component.html",

@@ -1,11 +1,11 @@
 ﻿import { Routes, RouterModule } from "@angular/router";
 
-import { HomeComponent } from "./home/index";
-import { LoginComponent } from "./login/index";
-import { RegisterComponent } from "./register/index";
+import { HomeComponent } from "./pages/home/index";
+import { LoginComponent } from "./pages/login/index";
+import { RegisterComponent } from "./pages/register/index";
+import { ErrorComponent } from "./pages/error/error.component";
+import { LogoutComponent } from "./pages/logout/logout.component";
 import { AuthGuard } from "./core/guards/index";
-import { ErrorComponent } from "./error/error.component";
-import { LogoutComponent } from "./logout/logout.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
