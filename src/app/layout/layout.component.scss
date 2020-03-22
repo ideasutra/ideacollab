@@ -3,6 +3,7 @@ $footer-height: 87px;
 
 main {
   padding-top: $header-height;
+  padding-bottom: $footer-height;
   .container-fluid {
     padding: 50px 170px;
   }

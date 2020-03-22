@@ -18,4 +18,8 @@ export class IdeaListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  public trackByFn(index, item) {
+    return item._id; // or item.id
+  }
 }

@@ -1,5 +1,5 @@
 ﻿<div class="col-md-12">
-  <div *ngIf="currentUser; then userList else ideas"></div>
+  <div *ngIf="currentUser; then userList else ideaList"></div>
 </div>
 
 <ng-template #userList>
@@ -24,11 +24,11 @@
   </p>
 </ng-template>
 
-<ng-template #ideas>
+<ng-template #ideaList>
   <div class="row">
-    <div class="col-3"></div>
+    <div class="col-4"></div>
 
-    <div class="col-9">
+    <div class="col-8">
       <div class="row app-row-search">
         <div class="col">
           <!-- Actual search box -->

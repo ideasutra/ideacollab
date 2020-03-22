@@ -1,0 +1,54 @@
+@import "styles-variables";
+
+.card {
+  background: linear-gradient(169.37deg, #ffffff 56.9%, #f8f8f8 71.13%);
+  /* Gray 5 */
+  @include round-border;
+
+  .card-header {
+    background-color: transparent;
+    border: none;
+    padding-top: 40px;
+
+    .app-idea-caption {
+      color: #b63563;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 34px;
+      display: inline;
+      padding-left: 18px;
+    }
+
+    .app-text-below-img {
+      vertical-align: top;
+      display: inline-block;
+      text-align: center;
+
+      .caption {
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+
+  .card-footer {
+    background-color: transparent;
+
+    .app-feedback-textarea {
+      width: 100%;
+      > textarea {
+        border: none;
+        background-color: transparent;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 18px;
+        width: 100%;
+      }
+    }
+  }
+
+  app-tag + app-tag {
+    padding-left: 17px;
+  }
+}

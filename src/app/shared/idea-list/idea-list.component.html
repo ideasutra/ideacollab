@@ -1,1 +1,3 @@
-<p>idea-list works!</p>
+<ng-container *ngFor="let idea of ideas; index as i; trackBy: trackByFn">
+  <app-idea [idea]="idea"></app-idea>
+</ng-container>

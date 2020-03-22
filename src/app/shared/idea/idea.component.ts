@@ -1,30 +1,22 @@
-﻿import { Component, OnInit } from "@angular/core";
+﻿import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 import { Idea } from "../../core/models/index";
-import { IdeaService } from "../../core/services/index";
 
 @Component({
-  templateUrl: "idea.component.html",
-  styleUrls: ["./idea.component.scss"]
+  selector: "app-idea",
+  templateUrl: "./idea.component.html",
+  styleUrls: ["./idea.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IdeaComponent implements OnInit {
-  ideas: Idea[] = [];
+  @Input("idea") idea: Idea;
 
-  constructor(private ideaService: IdeaService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.loadAllIdeas();
-  }
-
-  deleteIdea(_id: string) {
-    this.ideaService.delete(_id).subscribe(() => {
-      this.loadAllIdeas();
-    });
-  }
-
-  private loadAllIdeas() {
-    this.ideaService.getAll().subscribe(ideas => {
-      this.ideas = ideas;
-    });
-  }
+  ngOnInit() {}
 }

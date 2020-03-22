@@ -20,6 +20,7 @@ import { LogoutComponent } from "./pages/logout/logout.component";
 import { IdeaComponent } from "./shared/idea/idea.component";
 import { IdeaNewComponent } from "./shared/idea-new/idea-new.component";
 import { IdeaListComponent } from "./shared/idea-list/idea-list.component";
+import { TagComponent } from "./shared/tag/tag.component";
 
 // Other components
 import { LayoutComponent } from "./layout/index";
@@ -35,7 +36,8 @@ import { LayoutComponent } from "./layout/index";
     ErrorComponent,
     IdeaComponent,
     IdeaNewComponent,
-    IdeaListComponent
+    IdeaListComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),

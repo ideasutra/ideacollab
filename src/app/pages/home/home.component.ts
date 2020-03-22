@@ -41,8 +41,6 @@ export class HomeComponent implements OnInit {
   private loadAllIdeas() {
     this.ideaService.getAll().subscribe(ideas => {
       this.ideas = ideas;
-
-      console.log("ideas", this.ideas);
     });
   }
 }
