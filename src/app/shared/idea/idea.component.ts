@@ -24,7 +24,7 @@ export class IdeaComponent implements OnInit {
 
   ngOnInit() {}
 
-  addFeedback(event) {
+  addFeedback() {
     if (this.currentFeedback) {
       this.sendFeedback.emit(this.currentFeedback);
     }
