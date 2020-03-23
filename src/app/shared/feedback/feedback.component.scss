@@ -1,0 +1,40 @@
+@import "styles-variables";
+
+.card {
+  background: linear-gradient(169.37deg, #ffffff 56.9%, #f8f8f8 71.13%);
+  /* Gray 5 */
+  @include round-border;
+
+  .card-header {
+    background-color: transparent;
+    border: none;
+
+    .app-username {
+      display: inline;
+      padding-left: 18px;
+      color: #c4c4c4;
+    }
+  }
+
+  .card-body {
+    padding-top: 0px;
+    .app-feedback-content {
+      line-height: 34px;
+      display: block;
+      padding-left: 46px;
+    }
+
+    .app-text-below-img {
+      vertical-align: top;
+      display: block;
+      float: left;
+      text-align: center;
+
+      .caption {
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+}

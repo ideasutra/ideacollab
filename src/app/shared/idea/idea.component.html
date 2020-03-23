@@ -1,25 +1,32 @@
-﻿<div class="card">
-  <div class="card-header">
-    <div class="app-text-below-img">
-      <img src="assets/idea_lamp_red.png" />
-      <div class="caption">{{idea.rating}}</div>
-    </div>
-    <div class="app-idea-caption">{{idea._caption}}</div>
-  </div>
-  <div class="card-body">
-    <p class="card-text">{{idea.description}}</p>
-    <div class="tags">
-      <ng-container *ngFor="let tag of idea.tags">
-        <app-tag [tag]="tag"></app-tag>
-      </ng-container>
-    </div>
-  </div>
-  <div class="card-footer text-muted">
-    <div class="d-flex">
-      <div class="p-2 app-feedback-textarea">
-        <textarea placeholder="Feedback geben"></textarea>
+﻿<ng-container *ngIf="idea">
+  <div class="card">
+    <div class="card-header">
+      <div class="app-text-below-img">
+        <img src="assets/idea_lamp_red.png" />
+        <div class="caption">{{idea.rating}}</div>
       </div>
-      <div class="ml-auto p-2"><img src="assets/send_24px.png" /></div>
+      <div class="app-idea-caption">{{idea._caption}}</div>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{idea.description}}</p>
+      <div class="tags">
+        <ng-container *ngFor="let tag of idea.tags">
+          <app-tag [tag]="tag"></app-tag>
+        </ng-container>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <div class="d-flex">
+        <div class="p-2 app-feedback-textarea">
+          <textarea
+            placeholder="Feedback geben"
+            [(ngModel)]="currentFeedback"
+          ></textarea>
+        </div>
+        <div class="ml-auto p-2" (click)="addFeedback()">
+          <img src="assets/send_24px.png" />
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

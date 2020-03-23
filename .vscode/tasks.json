@@ -1,0 +1,20 @@
+{
+  // Unter https://go.microsoft.com/fwlink/?LinkId=733558
+  // finden Sie Informationen zum Format von "tasks.json"
+  "version": "2.0.0",
+  "tasks": [
+    {
+        "type": "npm",
+        "script": "start-dev-api",
+        "problemMatcher": []
+    },
+    {
+        "type": "typescript",
+        "tsconfig": "api/tsconfig.json",
+        "problemMatcher": [
+            "$tsc"
+        ],
+        "group": "build"
+    }
+]
+}

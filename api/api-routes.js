@@ -1,6 +1,7 @@
 var usersController = require("./controllers/users.controller");
 var ideasController = require("./controllers/ideas.controller");
 var tagsController = require("./controllers/tags.controller");
+var feedbacksController = require("./controllers/feedbacks.controller");
 
 // Filename: api-routes.js
 // Initialize express router
@@ -37,7 +38,7 @@ router
   .post(ideasController.new);
 
 router
-  .route("/ideas/:idea_id")
+  .route("/idea/:idea_id")
   .get(ideasController.view)
   .patch(ideasController.update)
   .put(ideasController.update)
@@ -47,20 +48,35 @@ router.route("/ideas/filter/user/:user_id").get(ideasController.findByUser);
 
 router.route("/ideas/filter/:text").get(ideasController.findByCaption);
 
-// ideas routes
+// tags routes
 router
   .route("/tags")
   .get(tagsController.index)
   .post(tagsController.new);
 
 router
-  .route("/tags/:tag_id")
+  .route("/tag/:tag_id")
   .get(tagsController.view)
   .patch(tagsController.update)
   .put(tagsController.update)
   .delete(tagsController.delete);
 
 router.route("/tags/filter/:text").get(tagsController.findByCaption);
+
+// feedbacks routes
+router
+  .route("/idea/:idea_id/feedbacks")
+  .get(feedbacksController.findByIdea)
+  .post(feedbacksController.new);
+
+router.route("/feedbacks").post(feedbacksController.new);
+
+router
+  .route("/feedback/:feedback_id")
+  .get(feedbacksController.view)
+  .patch(feedbacksController.update)
+  .put(feedbacksController.update)
+  .delete(feedbacksController.delete);
 
 var routeHandling = app => {
   // Use Api routes in the App
@@ -97,8 +113,10 @@ var routeHandling = app => {
   app.use("/api/user/*", jwtHandling().unless("/api/user/authenticate"));
   app.use("/api/ideas", jwtHandling(["post"]));
   app.use("/api/idea/*", jwtHandling(["patch", "put", "delete"]));
-  app.use("/api/tags", jwtHandling(["post"]));
-  app.use("/api/tag/*", jwtHandling(["patch", "put", "delete"]));
+  app.use("/api/feedbacks", jwtHandling(["post"]));
+  app.use("/api/feedback/*", jwtHandling(["patch", "put", "delete"]));
+  app.use("/api/idea/*/feedbacks", jwtHandling(["post"]));
+  app.use("/api/feedback/*", jwtHandling(["patch", "put", "delete"]));
 };
 
 // Export API routes

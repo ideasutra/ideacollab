@@ -102,7 +102,8 @@ exports.authenticate = function(req, res) {
       let newUser = {
         token: jwt.sign({ sub: user._id }, "Thisismyscretkey"),
         firstName: user.firstName,
-        lastName: user.lastName
+        lastName: user.lastName,
+        _id: user._id
       };
       res.json({
         status: "success",

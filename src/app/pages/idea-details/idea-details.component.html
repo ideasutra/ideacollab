@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-4"></div>
+
+  <div class="col-8">
+    <div class="row app-idea">
+      <div class="col">
+        <app-idea
+          [idea]="idea"
+          (sendFeedback)="addNewFeedback($event)"
+        ></app-idea>
+      </div>
+    </div>
+    <ng-container
+      *ngFor="let feedback of feedbacks; index as i; trackBy: trackByFn"
+    >
+      <div class="row app-feedback">
+        <div class="col">
+          <app-feedback [feedback]="feedback"></app-feedback>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

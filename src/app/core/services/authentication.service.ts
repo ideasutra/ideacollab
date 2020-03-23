@@ -11,6 +11,9 @@ import { User } from "../models";
 })
 export class AuthenticationService {
   public currentUser: User;
+  public isAuthenticated() {
+    return this.currentUser != null;
+  }
 
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));

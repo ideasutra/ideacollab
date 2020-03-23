@@ -6,12 +6,14 @@ import { RegisterComponent } from "./pages/register/index";
 import { ErrorComponent } from "./pages/error/error.component";
 import { LogoutComponent } from "./pages/logout/logout.component";
 import { AuthGuard } from "./core/guards/index";
+import { IdeaDetailsComponent } from "./pages/idea-details/idea-details.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "logout", component: LogoutComponent },
   { path: "register", component: RegisterComponent },
+  { path: "idea_details/:idea_id", component: IdeaDetailsComponent },
   { path: "ideas_user", component: ErrorComponent },
   { path: "ideas_completed", component: ErrorComponent },
   { path: "ideas_popular", component: ErrorComponent },

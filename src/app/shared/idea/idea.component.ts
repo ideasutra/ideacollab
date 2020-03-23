@@ -2,10 +2,12 @@
   Component,
   OnInit,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter
 } from "@angular/core";
 
-import { Idea } from "../../core/models/index";
+import { Idea, Feedback } from "../../core/models/index";
 
 @Component({
   selector: "app-idea",
@@ -15,8 +17,17 @@ import { Idea } from "../../core/models/index";
 })
 export class IdeaComponent implements OnInit {
   @Input("idea") idea: Idea;
+  @Output() sendFeedback: EventEmitter<any> = new EventEmitter();
+  public currentFeedback: string;
 
   constructor() {}
 
   ngOnInit() {}
+
+  addFeedback(event) {
+    if (this.currentFeedback) {
+      this.sendFeedback.emit(this.currentFeedback);
+    }
+    this.currentFeedback = "";
+  }
 }
